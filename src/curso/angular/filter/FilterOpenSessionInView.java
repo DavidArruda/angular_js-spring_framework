@@ -13,6 +13,7 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
@@ -20,12 +21,12 @@ import curso.angular.hibernate.HibernateUtil;
 import curso.angular.listener.ContextLoaderListenerCaixakiUtils;
 
 /**
- * Intercepta todas as requisições, faz commit e rollback
- * 
+ * Intercepta todas as requisições, faz commit e rollback 
  * @author alex
  */
 @WebFilter(filterName = "conexaoFilter")
-public class FilterOpenSessionInView extends DelegatingFilterProxy implements Serializable {
+public class FilterOpenSessionInView extends DelegatingFilterProxy implements
+		Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static SessionFactory sf;
@@ -36,14 +37,16 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements Se
 	}
 
 	@Override
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
+	public void doFilter(ServletRequest servletRequest,
+			ServletResponse servletResponse, FilterChain chain)
 			throws IOException, ServletException {
 
 		BasicDataSource springDataSource = (BasicDataSource) ContextLoaderListenerCaixakiUtils
 				.getBean("springDataSource");
 		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
-		PlatformTransactionManager transactionManager = new DataSourceTransactionManager(springDataSource);
-		org.springframework.transaction.TransactionStatus status = transactionManager.getTransaction(def);
+		PlatformTransactionManager transactionManager = new DataSourceTransactionManager(
+				springDataSource);
+		TransactionStatus status = transactionManager.getTransaction(def);
 
 		try {
 
