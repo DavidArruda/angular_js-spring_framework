@@ -14,8 +14,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate-5.4.18"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PostgreSQL-9.5"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/activation-1.0.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aopalliance-1.0.jar"/>
@@ -84,5 +82,8 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/start-1.0.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglib-core-0.4.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xmlbeans-1.0.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/postgresql-9.1-903.jdbc4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
