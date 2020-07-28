@@ -23,14 +23,7 @@
 		<property name="hibernate.connection.pool_size">50</property> <!-- Poll de conexão -->
 
 
-	    <mapping class="curso.angular.model.Estados" />
-	    <mapping class="curso.angular.model.Cidades" />
 		<mapping class="curso.angular.model.Cliente" />
-		<mapping class="curso.angular.model.Fornecedor" />
-		<mapping class="curso.angular.model.Livro" />
-		<mapping class="curso.angular.model.Pedido" />
-		<mapping class="curso.angular.model.ItemPedido" />
-		
 		
 	</session-factory>
 </hibernate-configuration>
