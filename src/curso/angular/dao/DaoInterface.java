@@ -62,4 +62,13 @@ public interface DaoInterface<T> {
 	 * @throws SQLException
 	 */
 	List<T> lista() throws SQLException;
+	
+	/**
+	 * Método para consultar um objeto a partir do código. (código == id)
+	 * @param codigo
+	 * @return
+	 * @throws SQLException
+	 */
+	T loadObjeto(Long codigo) throws SQLException;
+	
 }
