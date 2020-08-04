@@ -1,7 +1,60 @@
 <html>
-	<h1>Cadastro de clientes</h1>
-	
-	<a href="#clientelist">
-		<p>Lista de clientes</p>
-	</a>	
+<h1>Cadastro de clientes</h1>
+
+<a href="#clientelist">
+	Lista de clientes
+	<img alt="Lista" src="resources/img/list-icon.png" border="0">
+</a>
+
+</br>
+</br>
+
+<div class="col-lg-9 col-md-8">
+	<div class="card">
+		<div class="content">
+			<form id="formCliente" ng-submit="salvarCliente();">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>Id</label> <input type="text" ng-model="cliente.id"
+								class="form-control border-input" disabled />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Nome</label> <input type="text" ng-model="cliente.nome"
+								class="form-control border-input" placeholder="Nome"
+								required="required">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="endereco">Endere�o</label> <input type="text"
+								ng-model="cliente.endereco" class="form-control border-input"
+								placeholder="Endere�o">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-5">
+						<div class="form-group">
+							<label>Telefone</label> <input type="text" id="telefone"
+								ng-model="cliente.telefone" class="form-control border-input"
+								placeholder="Telefone" required="required">
+						</div>
+					</div>
+				</div>
+				
+				<div class="text-center">
+					<button type="submit" class="btn btn-info btn-fill btn-wd">Cadastrar</button>
+					<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="$scope.cliente={}">Limpar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 </html>
