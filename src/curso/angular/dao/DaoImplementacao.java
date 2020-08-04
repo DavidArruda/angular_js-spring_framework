@@ -65,5 +65,12 @@ public abstract class DaoImplementacao<T> implements DaoInterface<T>{
 		return  sessionFactory.getCurrentSession().createCriteria(persistenceClass).list();
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public T loadObjeto(Long codigo) throws SQLException {
+		//getCurrentSession().get busca o objeto que está em memória
+		return (T) sessionFactory.getCurrentSession().get(persistenceClass, codigo);
+	}
+	
 
 }
