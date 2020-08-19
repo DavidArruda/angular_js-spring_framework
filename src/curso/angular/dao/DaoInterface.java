@@ -71,4 +71,8 @@ public interface DaoInterface<T> {
 	 */
 	T loadObjeto(Long codigo) throws SQLException;
 	
+	int quantidadePagina() throws SQLException;
+		
+	List<T> consultaPaginada(String numeroPagina) throws SQLException;
+		
 }
