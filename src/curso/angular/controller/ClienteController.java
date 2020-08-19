@@ -25,20 +25,29 @@ public class ClienteController extends DaoImplementacao<Cliente> implements DaoI
 		super(persistenceClass);
 	}
 	
-	@RequestMapping(value = "salvar", method = RequestMethod.POST)
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "salvar", method = RequestMethod.POST) 
 	@ResponseBody
 	public ResponseEntity salvar(@RequestBody String jsonCliente) throws SQLException {
 		Cliente cliente = new Gson().fromJson(jsonCliente, Cliente.class);
+		
+		if(cliente != null && cliente.getAtivo() == null) cliente.setAtivo(false);
 		
 		super.salvarOuAtualizar(cliente);
 		
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "listar", method = RequestMethod.GET, headers = "Accept=application/json")
+	@RequestMapping(value = "listar/{numeroPagina}", method = RequestMethod.GET)
 	@ResponseBody // Resposta da requisição, em forma de Json
-	public String listar() throws SQLException {
-		return new Gson().toJson(super.lista());
+	public String listar(@PathVariable("numeroPagina") String numeroPagina) throws SQLException {
+		return new Gson().toJson(super.consultaPaginada(numeroPagina));
+	}
+	
+	@RequestMapping(value = "totalPagina", method = RequestMethod.GET, headers = "Accept=application/json")
+	@ResponseBody // Resposta da requisição, em forma de Json
+	public String totalPagina() throws SQLException {
+		return "" + super.quantidadePagina();
 	}
 	
 	@RequestMapping(value ="deletar/{codCliente}", method = RequestMethod.DELETE)
