@@ -2,6 +2,7 @@ package curso.angular.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,11 @@ public class Fornecedor implements Serializable {
 	private String cnpj;
 
 	private String inscricaoEstadual;
+	
+	private String telefone;
+	
+	@Column(columnDefinition = "text")
+	private String foto;
 	
 	private Boolean ativo;
 
@@ -102,6 +108,22 @@ public class Fornecedor implements Serializable {
 
 	public void setCidades(Cidades cidades) {
 		this.cidades = cidades;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	
 	public Boolean getAtivo() {
