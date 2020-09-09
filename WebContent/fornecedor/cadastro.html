@@ -1,0 +1,144 @@
+<html>
+<h1>Cadastro de fornecedor</h1>
+
+<a href="#fornecedorlist">
+	Lista de fornecedores
+	<img alt="Lista" src="resources/img/list-icon.png" border="0">
+</a>
+
+</br>
+</br>
+
+<div class="col-lg-9 col-md-8" ng-init="carregarEstados();">
+	<div class="card">
+		<div class="content">
+			<form id="formFornecedor" ng-submit="salvarFornecedor();">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<img id="imagemFornecedor" alt="Foto" src="" style="width: 118px;height: 140px;" border="0">
+							<input type="file" id="file" onchange="javascript:visualizarImg();">
+						</div>
+					</div>
+				
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>Id</label> <input type="text" ng-model="fornecedor.id"
+								class="form-control border-input" disabled />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Razão social</label> <input type="text" ng-model="fornecedor.razaoSocial"
+								class="form-control border-input" placeholder="Razão social"
+								required="required">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="nomeFantasia">Nome fantasia</label> 
+							<input type="text" id="nomeFantasia"
+								ng-model="fornecedor.nomeFantasia" class="form-control border-input"
+								placeholder="Nome fantasia">
+						</div>
+					</div>
+					
+
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="cnpj">CNPJ</label> 
+							<input type="text" id="cnpj"
+								ng-model="fornecedor.cnpj" class="form-control border-input"
+								placeholder="CNPJ">
+						</div>
+					</div>
+					<div class="col-md-1">
+						<div class="form-group">
+							<label>Ativo</label> 
+							<input type="checkbox" name="interesse" class="form-control" ng-model="fornecedor.ativo">
+						</div>
+					</div>
+				
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="endereco">Endereço</label> <input type="text"
+								ng-model="fornecedor.endereco" class="form-control border-input"
+								placeholder="Endereço">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="telefone">Telefone</label>
+							 <input type="text" id="telefone" ng-model="fornecedor.telefone" class="form-control border-input" placeholder="Telefone">
+						</div>
+					</div>
+				
+				
+				
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Inscrição estadual</label> <input type="text" ng-model="fornecedor.inscricaoEstadual"
+								class="form-control border-input" placeholder="Inscrição estaduall"
+								required="required">
+						</div>
+					</div>
+				</div>
+
+					
+				<div class="row">
+					<div class="col-md-5">
+						<div class="form-group"> 
+						   <label>Estado</label> 
+							<select ng-model="fornecedor.estados.id"
+							 id="selectEstados"
+							  class="form-control" onchange="javascript:carregarCidadesChrome(this);"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="est in dataEstados"  
+							  	ng-click="carregarCidades(est)"
+							  	value="{{est.id}}">{{est.sigla}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+					
+					<div class="col-md-7">
+						<div class="form-group"> 
+						   <label>Cidades</label> 
+							<select id="selectCidades" ng-model="fornecedor.cidades.id" 
+							class="form-control"> 
+							<option value="">Selecione</option>
+							  <option
+								  ng-repeat="cid in cidades"
+								  value="{{cid.id}}">{{cid.nome}}</option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				
+				<div class="text-center">
+					<button type="submit" class="btn btn-info btn-fill btn-wd">Cadastrar</button>
+					<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="$scope.fornecedor={}">Limpar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('#telefone').mask('(99) 99999-9999');
+	$('#cnpj').mask('999.999.999/9999-9');
+</script>
+</html>
