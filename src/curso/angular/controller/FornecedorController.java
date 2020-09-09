@@ -55,21 +55,24 @@ public class FornecedorController extends DaoImplementacao<Fornecedor> implement
 	public String totalPagina() throws SQLException {
 		return "" + super.quantidadePagina();
 	}
-	
+	 
+	/**
+	 * Deleta o fornecedor informado
+	 * @param codFornecedor
+	 * @return String vazia como resposta
+	 * @throws SQLException
+	 */
 	@RequestMapping(value ="deletar/{codFornecedor}", method = RequestMethod.DELETE)
-	public @ResponseBody String deletar(@PathVariable("codFornecedor") String codFornecedor) throws SQLException{
-		Fornecedor fornecedor = new Fornecedor();
-		fornecedor.setId(Long.parseLong(codFornecedor));
-		
+	public @ResponseBody
+	String deletar(@PathVariable("codFornecedor") String codFornecedor) throws SQLException{
 		super.deletar(loadObjeto(Long.parseLong(codFornecedor)));
-		
 		return "";
 	}
 	
 	/**
 	 * Busca fornecedor a partir de um código informado
 	 * @param codFornecedor
-	 * @return
+	 * @return JSON fornecedor
 	 * @throws SQLException
 	 */
 	@RequestMapping(value ="buscarFornecedor/{codFornecedor}", method = RequestMethod.GET)
