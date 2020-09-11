@@ -50,6 +50,13 @@ public class FornecedorController extends DaoImplementacao<Fornecedor> implement
 		return new Gson().toJson(super.consultaPaginada(numeroPagina));
 	}
 	
+	@RequestMapping(value = "listartodos", method = RequestMethod.GET, headers = "Accept=application/json")
+	@ResponseBody // Resposta da requisição, em forma de Json
+	public String listarTodos() throws SQLException {
+		return new Gson().toJson(super.lista());
+	}
+	
+	
 	@RequestMapping(value = "totalPagina", method = RequestMethod.GET, headers = "Accept=application/json")
 	@ResponseBody // Resposta da requisição, em forma de Json
 	public String totalPagina() throws SQLException {
