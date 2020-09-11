@@ -29,7 +29,7 @@ public class Fornecedor implements Serializable {
 
 	private String cnpj;
 
-	private String inscricaoEstadual;
+	private Long inscricaoEstadual;
 	
 	private String telefone;
 	
@@ -86,11 +86,11 @@ public class Fornecedor implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-	public String getInscricaoEstadual() {
+	public Long getInscricaoEstadual() {
 		return inscricaoEstadual;
 	}
 
-	public void setInscricaoEstadual(String inscricaoEstadual) {
+	public void setInscricaoEstadual(Long inscricaoEstadual) {
 		this.inscricaoEstadual = inscricaoEstadual;
 	}
 

@@ -54,10 +54,53 @@ app.config(function($routeProvider) {
 			
 			
 			
+			.when("/loja/online", {
+				controller : "lojaController",
+				templateUrl : "loja/online.html"
+			})
+			
+			
+			
 			.otherwise({
 				redirectTo : "/"
 			});
 });
+
+
+
+app.controller('lojaController', function($scope, $http, $location, $routeParams){
+		$scope.listarLivros = function(numeroPagina){
+		$scope.numeroPagina = numeroPagina;
+		$http.get("livro/listar/" + numeroPagina).success(function(response) {
+			$scope.data = response;
+			
+			$http.get("livro/totalPagina").success(function(response) {
+				$scope.totalPagina = response;
+			}).error(function(response) {
+				erro("Error: " + response);
+			});
+
+		}).error(function(response) {
+			erro("Error: " + response);
+		});
+	};
+	
+	$scope.proximo = function(){
+		if(new Number($scope.numeroPagina) < new Number($scope.totalPagina)){
+			$scope.listarLivros(new Number($scope.numeroPagina + 1));
+		}
+		
+	};
+	
+	$scope.anterior = function(){
+		if(new Number($scope.numeroPagina) > 1) {
+			$scope.listarLivros(new Number($scope.numeroPagina - 1));
+		}
+	};
+});
+
+
+
 
 
 

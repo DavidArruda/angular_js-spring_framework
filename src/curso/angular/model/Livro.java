@@ -16,13 +16,14 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String titulo;
 	private String autor;
 	private String descricao;
-	private String isbn;
-	private String ano;
-	private String paginas;
+	private Long isbn;
+	private Long ano;
+	private Long paginas;
+	private String valor;
 
 	@Column(columnDefinition = "text")
 	private String foto;
@@ -55,28 +56,36 @@ public class Livro {
 		this.descricao = descricao;
 	}
 
-	public String getIsbn() {
+	public Long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(String isbn) {
+	public void setIsbn(Long isbn) {
 		this.isbn = isbn;
 	}
 
-	public String getAno() {
+	public Long getAno() {
 		return ano;
 	}
 
-	public void setAno(String ano) {
+	public void setAno(Long ano) {
 		this.ano = ano;
 	}
 
-	public String getPaginas() {
+	public Long getPaginas() {
 		return paginas;
 	}
 
-	public void setPaginas(String paginas) {
+	public void setPaginas(Long paginas) {
 		this.paginas = paginas;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 	public String getFoto() {
@@ -98,11 +107,11 @@ public class Livro {
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

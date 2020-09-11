@@ -54,9 +54,9 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="descricao">Descrição</label> 
-								<input type="text" ng-model="livro.descricao"
+								<textarea ng-model="livro.descricao" cols="12" rows="5"
 								 class="form-control border-input"
-								 placeholder="Descrição" required="required">
+								 placeholder="Descrição" required="required"></textarea>
 							</div>
 						</div>
 				</div>
@@ -65,7 +65,7 @@
 						<div class="col-md-5">
 							<div class="form-group">
 								<label for="isbn">ISBN</label> 
-								<input type="text" ng-model="livro.isbn"
+								<input type="number" ng-model="livro.isbn"
 								 class="form-control border-input"
 								 placeholder="ISBN" required="required">
 							</div>
@@ -74,7 +74,7 @@
 						<div class="col-md-5">
 							<div class="form-group">
 								<label for="ano">Ano</label> 
-								<input type="text" ng-model="livro.ano"
+								<input type="number" ng-model="livro.ano"
 								 class="form-control border-input"
 								 placeholder="Ano" required="required">
 							</div>
@@ -83,7 +83,7 @@
 						<div class="col-md-2">
 							<div class="form-group">
 								<label for="pagina">Páginas</label> 
-								<input type="text" ng-model="livro.paginas"
+								<input type="number" ng-model="livro.paginas"
 								 class="form-control border-input"
 								 placeholder="Páginas" required="required">
 							</div>
@@ -101,14 +101,33 @@
 							</select>
 						</div>
 					</div>
+					
+					<div class="col-md-3">
+							<div class="form-group">
+								<label for="valor">Preço</label> 
+								<input type="text" ng-model="livro.valor" id="valor"
+								 class="form-control border-input"
+								 placeholder="Valor" required="required">
+							</div>
+						</div>
 				</div>
 
 				<div class="text-center">
 					<button type="submit" class="btn btn-info btn-fill btn-wd">Cadastrar</button>
-					<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="$scope.cliente={}">Limpar</button>
+					<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="$scope.livro={}">Limpar</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$("#valor").maskMoney({
+		prefix : 'R$ ',
+		thousands: ".",
+		decimal: ",",
+		affixesStay : true
+	});
+</script>
+
 </html>
